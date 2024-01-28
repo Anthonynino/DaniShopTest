@@ -1,0 +1,36 @@
+<div
+  *ngIf="alert"
+  id="toast-simple"
+  class="animate__animated animate__backInLeft fixed ms-10 w-full max-w-xs p-4 border-2 border-green-500 text-green-400 bg-white divide-x divide-gray-200 rounded-lg shadow dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-800"
+  role="alert"
+>
+  <div class="ps-4 text-sm font-normal">
+    <i class="fa-solid fa-check"></i> Se agrego un producto al carrito.
+  </div>
+</div>
+<mat-paginator
+  #paginator
+  [length]="productService.products()?.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[2, 4, 6]"
+  (page)="handlePageEvent($event)"
+  [pageIndex]="pageIndex"
+>
+</mat-paginator>
+
+<div class="text-center">
+  <div
+    class="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2"
+  >
+    <div
+      class="m-auto gap-y-5"
+      *ngFor="
+        let product of productService
+          .products()
+          ?.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize)
+      "
+    >
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </div>
+</div>

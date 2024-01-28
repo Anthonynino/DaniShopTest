@@ -1,0 +1,86 @@
+.card {
+  height: 500px;
+
+  img {
+    width: 100% !important;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  &-body {
+    .card-title {
+      height: 20px;
+      overflow: hidden;
+    }
+  }
+
+  .button {
+    background-color: #082f4b;
+    border: none !important;
+  }
+}
+
+.lightbox {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.4);
+  backdrop-filter: blur(2rem);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+
+  &.isActive {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &_btn {
+    width: 3rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+
+  &_btn:hover {
+    transform: scale(0.9);
+  }
+
+  &_btn:active {
+    transform: scale(1.1);
+  }
+
+  .lightbox_icon {
+    color: red;
+  }
+
+  .lightbox_img {
+    width: 30%;
+    height: 60vh;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.4);
+    @media screen and (max-width: 1200px) {
+      width: 45%;
+      height: 55vh;
+    }
+    @media screen and (max-width: 900px) {
+      width: 55%;
+      height: 50vh;
+    }
+    @media screen and (max-width: 600px) {
+      width: 65%;
+      height: 40vh;
+    }
+    @media screen and (max-width: 400px) {
+      width: 80%;
+    }
+  }
+}
